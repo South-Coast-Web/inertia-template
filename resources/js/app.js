@@ -13,9 +13,7 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createSSRApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(registerComponents, {
-                namespace: "",
-            })
+            .use(registerComponents)
             .mount(el);
     },
 });
