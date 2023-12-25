@@ -1,3 +1,3 @@
 ```
-composer create-project -s dev southcoastweb/inertia-template example-app
+composer create-project -s dev evo-mark/inertia-template example-app
 ```
