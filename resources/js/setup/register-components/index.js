@@ -1,9 +1,9 @@
-import { registerComponents } from "vue3-auto-vite-components";
+import { registerComponents as autoRegisterComponents } from "vue3-auto-vite-components";
 import { registerGlobal } from "./globalComponents";
 
 export const registerComponents = {
     install: (app, options) => {
-        app.use(registerComponents, {
+        app.use(autoRegisterComponents, {
             namespace: "Evo",
             sync: import.meta.glob("../../components/sync/**/*.vue", {
                 eager: true,
