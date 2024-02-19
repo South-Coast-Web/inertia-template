@@ -4,6 +4,7 @@ import { renderToString } from "@vue/server-renderer";
 import { createSSRApp, h } from "vue";
 import DefaultLayout from "layouts/Default.vue";
 import { registerComponents } from "./setup";
+import { useInertiaRoutes } from "inertiaRoutes";
 
 createServer((page) =>
     createInertiaApp({
@@ -16,13 +17,15 @@ createServer((page) =>
             return page;
         },
         setup({ App, props, plugin }) {
+            const inertiaRoutesPlugin = useInertiaRoutes(props);
+
             return createSSRApp({
                 render: () => h(App, props),
             })
                 .use(plugin)
-                .use(registerComponents, {
-                    namespace: "",
-                });
+                .use(inertiaRoutesPlugin)
+
+                .use(registerComponents);
         },
     })
 );

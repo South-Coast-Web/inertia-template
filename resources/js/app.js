@@ -2,6 +2,7 @@ import { createSSRApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/vue3";
 import DefaultLayout from "layouts/Default.vue";
 import { registerComponents } from "./setup";
+import { useInertiaRoutes } from "inertiaRoutes";
 
 createInertiaApp({
     resolve: (name) => {
@@ -11,8 +12,11 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, plugin }) {
+        const inertiaRoutesPlugin = useInertiaRoutes(props);
+
         createSSRApp({ render: () => h(App, props) })
             .use(plugin)
+            .use(inertiaRoutesPlugin)
             .use(registerComponents)
             .mount(el);
     },
