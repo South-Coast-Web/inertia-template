@@ -5,10 +5,12 @@
 		"build": "vite build",
 		"build:ssr": "vite build --ssr",
 		"lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix resources/js",
-		"format": "prettier .  --write"
+		"format": "prettier .  --write",
+		"preinstall": "npx only-allow pnpm"
 	},
 	"type": "module",
 	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.10",
 		"@vitejs/plugin-vue": "^5.0.0",
 		"autoprefixer": "^10.4.14",
 		"axios": "^1.1.2",
